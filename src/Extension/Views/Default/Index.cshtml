@@ -1,0 +1,19 @@
+﻿@* Copyright © 2017 Dmitry Sikorsky. All rights reserved. *@
+@* Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. *@
+@model dynamic
+<h1>Database Content</h1>
+<p>
+  We have the single database. It contains the Identity tables and ones defined by the application.
+  While Identity is in use (and the default ExtCore.Data.Abstractions.IStorageContext interface implementation is replaced),
+  entities from the extensions are still resolved automatically.
+</p>
+<h2>Users</h2>
+@foreach (var user in this.Model.Users)
+{
+  <p>@user.UserName</p>
+}
+<h2>Persons</h2>
+@foreach (var person in this.Model.Persons)
+{
+  <p>@person.Name</p>
+}
