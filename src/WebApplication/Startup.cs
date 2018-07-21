@@ -11,17 +11,11 @@ namespace WebApplication
 {
   public class Startup
   {
-    private IConfigurationRoot configurationRoot;
     private string extensionsPath;
 
-    public Startup(IHostingEnvironment hostingEnvironment)
+    public Startup(IHostingEnvironment hostingEnvironment, IConfiguration configuration)
     {
-      IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
-        .SetBasePath(hostingEnvironment.ContentRootPath)
-        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-      this.configurationRoot = configurationBuilder.Build();
-      this.extensionsPath = hostingEnvironment.ContentRootPath + this.configurationRoot["Extensions:Path"];
+      this.extensionsPath = hostingEnvironment.ContentRootPath + configuration["Extensions:Path"];
     }
 
     public void ConfigureServices(IServiceCollection services)
