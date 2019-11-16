@@ -22,7 +22,7 @@ namespace Extension.Actions
     {
       // This is a bad (but quick) way to provide configurations to the extensions. A good one is to use the options pattern.
       IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
-        .SetBasePath(serviceProvider.GetService<IHostingEnvironment>().ContentRootPath)
+        .SetBasePath(serviceProvider.GetService<IWebHostEnvironment>().ContentRootPath)
         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
       serviceCollection.AddDbContext<ApplicationDbContext>(options =>
